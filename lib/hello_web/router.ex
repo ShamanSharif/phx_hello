@@ -20,16 +20,11 @@ defmodule HelloWeb.Router do
     get "/", PageController, :home
   end
 
+  # Other scopes may use custom stacks.
   scope "/api", HelloWeb do
     pipe_through :api
-
     resources "/posts", PostController, except: [:new, :edit]
   end
-
-  # Other scopes may use custom stacks.
-  # scope "/api", HelloWeb do
-  #   pipe_through :api
-  # end
 
   # Enable LiveDashboard and Swoosh mailbox preview in development
   if Application.compile_env(:hello, :dev_routes) do
